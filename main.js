@@ -12,9 +12,7 @@ let loaded = false;
 
 // Configuración de la altura de la página para permitir scroll largo
 const PLAYBACK_SCROLL_HEIGHT = 400; // Cuántos píxeles de scroll para reproducir todo el video
-// Pero la ajustaremos más dinámicamente si es necesario, 
-// o usaremos un valor muy alto para que sea fluido.
-document.body.style.height = '500vh';
+// La altura se determina dinámicamente por el contenido (#scroll-content)
 
 // Simulación de carga hacker
 let p = 0;
