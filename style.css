@@ -546,6 +546,8 @@ nav a:hover {
   font-family: var(--font-display);
   margin-bottom: 20px;
   font-size: 2rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .glass-panel p {
