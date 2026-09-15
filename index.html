@@ -11,6 +11,10 @@
   <!-- LOADER -->
   <div id="loader" class="loader">
     <div class="loader-content">
+      <div class="loader-icon-container" id="loader-icon-container">
+        <img src="/icon.png" class="loader-icon-dim" alt="Loading">
+        <img src="/icon.png" class="loader-icon-fill" id="loader-icon-fill" alt="Loading">
+      </div>
       <div class="glitch-text" data-text="INITIALIZING_MATRIX">INITIALIZING_MATRIX</div>
       <div class="progress-bar">
         <div id="progress-fill" class="progress-fill"></div>
@@ -29,12 +33,20 @@
   </div>
 
   <!-- NAVIGATION -->
-  <header class="navbar">
-    <div class="logo">BEANCAT.WORLD</div>
+  <header class="navbar" id="main-nav">
+    <div class="logo">
+      <a href="#home" class="nav-logo-btn" aria-label="Back to top">
+        <div class="btt-icon-wrapper">
+          <img src="/icon.png" alt="Beancat Logo" class="btt-icon-normal">
+          <img src="/iconoutline.png" alt="Beancat Logo" class="btt-icon-hover">
+        </div>
+      </a>
+    </div>
     <nav>
-      <a href="#about">ACCESS</a>
-      <a href="#legend">LEGEND</a>
-      <a href="#community">NETWORK</a>
+      <a href="#about" class="nav-link">ACCESS</a>
+      <a href="#legend" class="nav-link">LEGEND</a>
+      <a href="#community" class="nav-link">NETWORK</a>
+      <span class="nav-indicator"></span>
     </nav>
     <div class="sound-control">
       <button id="sound-btn" class="sound-toggle">SOUND: OFF</button>
@@ -45,36 +57,95 @@
   <!-- AUDIO -->
   <audio id="bg-audio" src="/musica.mp3" loop></audio>
 
+  <!-- MODALS -->
+  <div id="proof-modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="close-modal" class="close-btn" data-text="&times;">&times;</span>
+      <div class="glitch-img-wrapper">
+        <img src="/twitter.png" alt="Original Arc Twitter" class="glitch-base">
+        <img src="/twitter.png" alt="" class="glitch-layer layer-1">
+        <img src="/twitter.png" alt="" class="glitch-layer layer-2">
+      </div>
+    </div>
+  </div>
+
   <!-- SCROLL CONTENT -->
   <main id="scroll-content">
     <section class="step hero" id="home">
-      <h1 class="glitch-title" data-text="BEANCAT">BEANCAT</h1>
-      <h2 class="subtitle">THE ORIGINAL ARC LEGEND</h2>
-      <p class="scroll-prompt">Scroll to decrypt</p>
+      <h1 class="hero-title js-text-reveal" data-preset="zoom-out" data-delay="0.3" data-speed="4.0" data-text="BEANCAT">BEANCAT</h1>
+      <h2 class="subtitle js-text-reveal" data-preset="slide" data-delay="1.2" data-speed="2.5">THE ORIGINAL ARC LEGEND</h2>
+      <p class="scroll-prompt js-text-reveal" data-preset="fade" data-delay="2.0" data-speed="3.0">Scroll to initiate</p>
     </section>
 
     <section class="step" id="about">
       <div class="glass-panel">
-        <h3>SYSTEM.ABOUT //</h3>
-        <p>A new era of the cyber-feline matrix has begun. We are taking back the net.</p>
+        <img src="/Logo.png" alt="ARC Logo" style="max-width: 200px; margin-bottom: 20px;">
+        <h3 class="js-encrypted-text">THE_ORIGINAL_HANDLE //</h3>
+        <p>Long before crypto Twitter claimed the namespace, <span style="color: #fff;">a legendary cat</span> secured the ultimate piece of digital real estate: <span style="color: #fff;">@arc</span>. His name is <span style="color: #fff;">$BEANCAT</span>, and is the direct descendant of the OG identity.</p>
+        <button id="proof-btn" class="cyber-button mt-4">PROOF</button>
       </div>
     </section>
 
     <section class="step" id="legend">
       <div class="glass-panel align-right">
-        <h3>THE_LEGEND //</h3>
-        <p>Born from the deepest blocks of the chain, Beancat represents the ultimate technological evolution.</p>
+        <h3>THE_LEGEND_ARRIVES //</h3>
+        <p>While the market gets ready for <span style="color: #fff;">Arc's mainnet deployment</span>, the culture belongs to the cat that was there first. <span style="color: #fff;">$BEANCAT</span> stands as the cultural mascot tied to the name's origin.</p>
+        <div class="contract-container mt-4">
+          <img src="/iconoutline.png" alt="Icon Outline" class="contract-icon">
+          <div class="contract-box" id="copy-btn">
+            <span class="ca-label">CA</span>
+            <input type="text" id="contract-address" value="0xXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" readonly>
+            <div class="copy-overlay" id="copy-overlay">CLICK TO COPY</div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="step" id="community">
-      <div class="glass-panel">
-        <h3>JOIN_THE_NETWORK //</h3>
-        <p>Connect with the mainframe. The Beancat revolution is decentralized.</p>
-        <button class="cyber-button mt-4">CONNECT</button>
+    <section class="step" id="community" style="padding: 0;">
+      <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 10%;">
+        <div class="glass-panel">
+          <h3>THE_CULT //</h3>
+          <p>We don't chase hype; we own the pedigree. <span style="color: #fff;">USDC</span> powers the rails. <span style="color: #fff;">Arc</span> launches the network. <span style="color: #fff;">$BEANCAT</span> claims the throne.</p>
+          <p class="mt-4">He had the handle first. Now he owns the ticker.</p>
+          
+          <div class="button-group mt-4">
+            <button class="cyber-button">BUY NOW</button>
+            <button class="cyber-button cyber-button-gold">LIVE CHART</button>
+          </div>
+          <div class="button-group mt-4">
+            <button class="cyber-button">DEXSCREENER</button>
+            <button class="cyber-button cyber-button-gold">X</button>
+            <button class="cyber-button">TELEGRAM</button>
+          </div>
+        </div>
       </div>
+
     </section>
   </main>
+
+  <!-- FOOTER -->
+  <footer class="cyber-footer">
+    <div class="footer-left">
+      <span>THE MATRIX</span>
+      <span>BELONGS</span>
+      <span>TO BEANCATS</span>
+    </div>
+    <div class="footer-center">
+      © 2026 BEANCAT.WORLD - A community token launching on the decentralized nodes. Not affiliated with, endorsed by, or associated with any real-world corporation. Nothing here is financial advice.
+    </div>
+    <div class="footer-right">
+      <a href="#" aria-label="X (Twitter)">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"></path>
+        </svg>
+      </a>
+      <a href="#" aria-label="Telegram">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.11.03-1.84 1.18-5.2 3.45-.49.34-.93.5-1.33.49-.44-.01-1.28-.25-1.91-.45-.73-.24-1.31-.36-1.26-.78.02-.22.32-.45.9-.7 3.53-1.54 5.88-2.55 7.07-3.04 3.36-1.39 4.06-1.63 4.52-1.64.1 0 .32.02.43.12.09.08.12.2.13.31.02.09.02.19.01.3z"></path>
+        </svg>
+      </a>
+    </div>
+  </footer>
 
   <script type="module" src="/main.js"></script>
 </body>
