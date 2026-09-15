@@ -242,6 +242,25 @@ navLinks.forEach(link => {
   });
 });
 
+// Hamburger Menu Logic
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const navLinksContainer = document.getElementById('nav-links');
+
+if (hamburgerBtn && navLinksContainer) {
+  hamburgerBtn.addEventListener('click', () => {
+    hamburgerBtn.classList.toggle('active');
+    navLinksContainer.classList.toggle('active');
+  });
+
+  // Close menu when clicking a link
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      hamburgerBtn.classList.remove('active');
+      navLinksContainer.classList.remove('active');
+    });
+  });
+}
+
 // Text Reveal Effect
 class TextReveal {
   constructor(element) {

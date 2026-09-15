@@ -215,6 +215,10 @@ nav {
   justify-content: center;
 }
 
+.hamburger {
+  display: none;
+}
+
 nav a {
   color: #fff;
   text-decoration: none;
@@ -905,4 +909,157 @@ nav a:hover {
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
+}
+
+/* ========================================================= */
+/*                   MEDIA QUERIES (RESPONSIVE)              */
+/* ========================================================= */
+
+/* Tablet / Small Desktop */
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 5rem;
+  }
+  .navbar {
+    padding: 15px 30px;
+  }
+  .glass-panel {
+    padding: 30px;
+    max-width: 90%;
+  }
+  .align-right {
+    align-self: center; /* Override right alignment */
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  /* General Typography */
+  .hero-title {
+    font-size: 3.5rem;
+  }
+  .subtitle {
+    font-size: 1.2rem;
+  }
+  h3 {
+    font-size: 1.2rem;
+  }
+  p {
+    font-size: 0.95rem;
+  }
+  
+  /* Preloader adjustments */
+  .glitch-text {
+    font-size: 2rem;
+  }
+
+  /* Glass Panels */
+  .glass-panel {
+    width: 95%;
+    padding: 20px;
+  }
+
+  /* Contract Box */
+  .contract-box input {
+    width: 150px;
+  }
+  
+  /* Button Groups */
+  .button-group {
+    justify-content: center;
+  }
+  
+  /* Navbar / Hamburger */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 101; /* Above mobile menu */
+    padding: 0;
+  }
+  
+  .hamburger span {
+    width: 30px;
+    height: 3px;
+    background: var(--neon-green);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg);
+  }
+
+  #nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s ease;
+    z-index: 100;
+  }
+  
+  #nav-links.active {
+    right: 0;
+  }
+  
+  #nav-links a {
+    margin: 20px 0;
+    font-size: 1.2rem;
+  }
+
+  .nav-indicator {
+    display: none;
+  }
+
+  /* Simplify top bar on mobile */
+  .sound-control {
+    display: none; 
+  }
+}
+
+/* Small Mobile / iPhone SE */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .glitch-text {
+    font-size: 1.5rem;
+  }
+
+  .contract-box input {
+    width: 110px;
+  }
+
+  .cyber-button {
+    font-size: 0.8rem;
+    padding: 10px 15px;
+  }
 }
