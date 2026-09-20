@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BEANCAT — Total Supply</title>
-  
+
   <link rel="icon" type="image/png" href="/icon.png" />
   <!-- Import the main CSS to keep all the variables and neon styles -->
   <link rel="stylesheet" href="../style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;700&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet">
+
   <style>
     body {
       display: flex;
@@ -20,7 +23,7 @@
       background-color: #000;
       overflow: hidden;
     }
-    
+
     /* Background elements */
     .bg-video {
       position: absolute;
@@ -32,7 +35,7 @@
       opacity: 0.3;
       z-index: -2;
     }
-    
+
     .overlay-grain {
       position: absolute;
       inset: 0;
@@ -58,15 +61,23 @@
       transition: all 0.3s ease;
       animation: float 6s ease-in-out infinite;
     }
-    
+
     .supply-container:hover {
       box-shadow: 0 0 60px rgba(0, 255, 65, 0.2), inset 0 0 30px rgba(0, 255, 65, 0.1);
     }
 
     @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0px); }
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
     }
 
     .title {
@@ -81,13 +92,14 @@
 
     .number {
       font-family: var(--font-display);
-      font-size: 5rem;
+      font-size: 4rem;
       font-weight: 900;
       color: var(--neon-green);
       text-shadow: 0 0 20px var(--neon-green);
       margin: 20px 0;
       word-wrap: break-word;
-      min-height: 100px; /* space while loading */
+      min-height: 100px;
+      /* space while loading */
     }
 
     .loading-text {
@@ -97,8 +109,15 @@
     }
 
     @keyframes blink {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 1; }
+
+      0%,
+      100% {
+        opacity: 0.3;
+      }
+
+      50% {
+        opacity: 1;
+      }
     }
 
     .back-btn {
@@ -127,15 +146,18 @@
       .supply-container {
         padding: 40px 20px;
       }
+
       .title {
         font-size: 1.8rem;
       }
+
       .number {
         font-size: 3rem;
       }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Try to use the same background video if it exists in public -->
@@ -146,7 +168,7 @@
 
   <div class="supply-container">
     <h1 class="title">Total Supply</h1>
-    
+
     <div id="supply-number" class="number">
       <span class="loading-text">SYNCING_DATA...</span>
     </div>
@@ -158,28 +180,28 @@
     // Automatically fetch the pure number from our API when the page loads
     async function fetchSupply() {
       const supplyElement = document.getElementById('supply-number');
-      
+
       try {
         const response = await fetch('/api/total-supply');
-        
+
         if (!response.ok) {
           throw new Error('Network error');
         }
-        
+
         const text = await response.text();
         const number = parseFloat(text);
-        
+
         if (isNaN(number)) {
           throw new Error('Invalid data');
         }
 
         // Format the number with commas (e.g. 1,000,000) for humans
         const formattedNumber = new Intl.NumberFormat('en-US').format(number);
-        
+
         // Add a cool glitch reveal effect
         supplyElement.innerHTML = formattedNumber;
         supplyElement.style.animation = 'none';
-        
+
       } catch (error) {
         console.error('Failed to load supply:', error);
         supplyElement.innerHTML = '<span style="color: #ff3333; font-size: 1.5rem;">CONNECTION_FAILED</span>';
@@ -191,4 +213,5 @@
     setTimeout(fetchSupply, 800);
   </script>
 </body>
+
 </html>
